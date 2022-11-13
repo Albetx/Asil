@@ -1,27 +1,27 @@
-# Test2
+# AsIL Ecommerce
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+This project is a e-commerce website powered by Angular 14 on the frontend and Spring Boot for the backend.
 
-## Development server
+<b>AsIL</b> is a middleman between customers and well known shopping websites. It contains selected products from different sites and provides to the customer the best deals, authentic recommendations and more.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![screen](https://user-images.githubusercontent.com/107939270/201516352-a2075275-8d50-43b7-a4bc-ed75a94694d2.png)
 
-## Code scaffolding
+## What features already available 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* User authentication using email and password and authorization using JWT token.
+* Home screen contains selected items from selected categories.
+* Categories pages containing all the relevant items.
+* Item pages with a description, available coupons, link for the purcash page and a like counter.
 
-## Build
+## Built With
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* Angular - Angular 14 Frontend
+* Java - Oracle Jave 17 JDK
+* Spring - Spring Boot 4
+* MySQL - MySQL Database
+* Bootstrap - Icons
+* Angular Material - UI Components
 
-## Running unit tests
+## Authors
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* Albert Ilyasov 
