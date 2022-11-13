@@ -1,6 +1,6 @@
 # AsIL Ecommerce
 
-This project is a e-commerce website powered by Angular 14 on the frontend and Spring Boot for the backend.
+This project is an e-commerce website powered by Angular 14 on the frontend and Spring Boot for the backend.
 
 <b>AsIL</b> is a middleman between customers and well known shopping websites. It contains selected products from different sites and provides to the customer the best deals, authentic recommendations and more.
 
