@@ -1,0 +1,66 @@
+
+h1 {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+mat-paginator {
+    margin: auto;
+    width:1150px;
+}
+
+.items{
+    background-color: #F6F6F6;
+    width:1150px;
+    margin: auto;
+}
+
+.item {
+    display:inline-block;
+    padding: 10px;
+    margin: 5px;
+    background-color:white;
+    border-radius: 10px;
+}
+
+.item-image{
+    width: 200px;
+    border-radius: 10px;
+    display:table-column;
+    cursor: pointer;
+    opacity:1;
+    transition: 500ms ease;
+}
+
+.item-image:hover{
+    opacity:0.7;
+    transition: 500ms ease;
+}
+
+.item-description {
+    width: 200px;
+    font-size: smaller;
+    font-family: Arial, Helvetica, sans-serif;
+    display:block;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.item-description:hover {
+    text-decoration: underline;
+    color: cornflowerblue;
+}
+
+.item-price {
+    width: 200px;
+    font-size: medium;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    width: 100px;
+    display:inline-table;
+}
+
+.like-button{
+    float:right;
+}

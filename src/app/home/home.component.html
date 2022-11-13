@@ -1,0 +1,32 @@
+<div class="home-page">
+    <div class="top-background">
+        <h1>AsIL</h1>
+        <h3>Shopping</h3>
+        <div class="top">
+            <h5>Welcome {{name}}</h5>
+            <nav class="navbar">
+                <ul>
+                    <li class="bi bi-caret-right-fill" *ngIf="authService.isLoggedIn() && isAnAdmin"> <a routerLink="/admin" class="link">Admin</a></li>
+                    <li class="bi bi-caret-right-fill" *ngIf="!authService.isLoggedIn()"> <a routerLink="/login">Login </a></li>
+                    <li class="bi bi-caret-right-fill" *ngIf="authService.isLoggedIn()"> <a routerLink="/" (click)="authService.logout()">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <img class="banner" src="/assets/images/banner002.jpg" alt="Multimedia banner">
+
+    <products-bar category="Mult" alignment="right"></products-bar>
+    <products-bar category="Mult" alignment="left" ></products-bar>
+
+    <img class="banner" src="/assets/images/banner001.jpg" alt="Multimedia banner">
+
+    <products-bar category="Mult" alignment="right"></products-bar>
+    <products-bar category="Mult" alignment="left" ></products-bar>
+
+</div>
+
+<div class="footer">
+    <app-footer></app-footer>
+</div>
+

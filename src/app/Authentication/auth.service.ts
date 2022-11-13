@@ -1,0 +1,61 @@
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { catchError, NotFoundError, throwError } from 'rxjs';
+import { map } from 'rxjs/internal/operators/map';
+import { AppError } from '../common/app-error';
+import { BadInput } from '../common/bad-input';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  constructor(private http: HttpClient) { }
+
+
+  login (credentials: any) {
+    let params = new HttpParams();
+    params = params.append('email', credentials.username);
+    params = params.append('password', credentials.password);
+
+    return this.http.post('http://localhost:8080/login',params)
+      .pipe(map((response: any) => {
+        console.log(response);
+        if (response && response.access_token){
+          localStorage.setItem('token', response.access_token);
+          return true;
+        }
+        return false;
+      }));
+  }
+
+  logout(){
+    localStorage.removeItem('token');
+  }
+
+  isLoggedIn(){
+    let jwtHelper = new JwtHelperService();
+    let token = localStorage.getItem('token');
+
+    if (!token)
+      return false;
+
+    return !jwtHelper.isTokenExpired(token!);
+  }
+
+  get currentUser(){
+    let token = localStorage.getItem('token');
+    if (!token) return null;
+    
+    return new JwtHelperService().decodeToken(token);
+  }
+
+  private handleError (error: Response){
+    if (error.status === 400)
+      return throwError (new BadInput(error.json()));
+
+    return throwError (new AppError(error));
+  }
+
+}

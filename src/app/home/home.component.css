@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+li{
+    list-style-type:"";
+}
+
+h1{
+    font-family: 'Righteous', cursive;
+    font-size: 70px;
+    color: black;
+    display: inline-block;
+}
+
+h3 {
+    font-family: 'Righteous', cursive;
+    color:black;
+    font-size: 15px;
+    display: inline-block;
+}
+
+h5 {
+    font-family: 'Righteous', cursive;
+    text-align: center;
+}
+
+.home-page {
+    display: grid;
+}
+
+.top {
+    width: 20%;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.39);
+}
+
+.top-background{
+    background-image: linear-gradient(transparent, #EFF5F5 90%), url("/assets/images/homebg3.jpg");
+    background-position: center;
+    padding: 20px;
+    padding-bottom: 60px;
+}
+
+.banner {
+    display: block;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 1100px;
+}
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 200px;
+  }
+
+
