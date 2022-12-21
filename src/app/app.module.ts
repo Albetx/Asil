@@ -30,7 +30,7 @@ import { ProductsComponent } from './products-category/products.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { ApiService } from './services/api.service';
+import { UserService } from './services/user.service';
 import { ProductsBarComponent } from './products-bar/products-bar.component';
 import { FooterComponent } from './footer/footer.component';
 
@@ -75,7 +75,11 @@ import { FooterComponent } from './footer/footer.component';
         component: ProductPageComponent
       },
       {
-        path: 'multimedia', 
+        path: 'multimedia/:type', 
+        component: ProductsComponent
+      },
+      {
+        path: 'items/:type', 
         component: ProductsComponent
       },
       {
@@ -99,7 +103,7 @@ import { FooterComponent } from './footer/footer.component';
   ],
   providers: [
     ProductService,
-    ApiService,
+    UserService,
     {provide: ErrorHandler, useClass: AppErrorHeandler},
     AuthService,
 

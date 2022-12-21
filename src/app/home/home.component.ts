@@ -1,4 +1,4 @@
-import { ApiService } from './../services/api.service';
+import { UserService } from '../services/user.service';
 import { AuthService } from './../Authentication/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { AdminAuthGuard } from '../services/admin-auth-guard.service';
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private apiService: ApiService,
+    private userService: UserService,
     private adminAuthGuard: AdminAuthGuard) {}
 
 
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 
     if (this.authService.currentUser){
       let email = this.authService.currentUser.sub;
-      this.apiService.getByEmail(email)
+      this.userService.getUserByEmail(email)
         .subscribe((result: any) => {
           this.name = result.name;
           this.roles = result.roles;

@@ -1,11 +1,6 @@
 
 <span class="bi" 
-[class.bi-star]="!isFavorite"
-[class.bi-star-fill]="isFavorite"
+[class.bi-save]="!isFav"
+[class.bi-save-fill]="isFav"
 (click)="onClick()">
 </span>
-
-<br>
-
-<input type="text" [(ngModel)]="title">
-<h1>{{title | titlecase}}</h1>

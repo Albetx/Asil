@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NotFoundError } from 'rxjs';
-import { AppError } from '../common/app-error';
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -25,7 +23,7 @@ export class ProductPageComponent implements OnInit {
     this.route.paramMap
       .subscribe(params => {
         this.id = Number(params.get('id'));
-        this.service.getById(this.id)
+        this.service.getProductById(this.id)
           .subscribe(response => {
             this.product = response;
             this.likes = this.product.likes;
@@ -51,10 +49,10 @@ export class ProductPageComponent implements OnInit {
     return this.product.content;
   }
 
-  get cupon(){
+  get coupon(){
     if (!this.product)
       return ""
-    return this.product.cupon;
+    return this.product.coupon;
   }
 
   get link(){

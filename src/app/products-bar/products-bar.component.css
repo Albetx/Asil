@@ -64,14 +64,22 @@
 }
 
 .item-price {
-    float:left;
     font-size: medium;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     display:inline-table;
 }
 
 .like-button{
+    margin-right: 15px;
     float:right;
 }
+
+.save-button{
+    margin-left: 15px;
+    float:left;
+    cursor: pointer;
+}
+
+
 
 

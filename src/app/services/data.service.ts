@@ -11,25 +11,10 @@ import { catchError } from 'rxjs/operators';
 })
 export class DataService {
 
-  constructor(@Inject(String) private url: string,private http: HttpClient) { }
+  constructor(@Inject(String) protected url: string,protected http: HttpClient) { }
 
   getAll(){
     return this.http.get(this.url)
-      .pipe(catchError(this.handleError));
-  }
-
-  getProductsByCategory(category: string){
-    return this.http.get(this.url + "/category/" + category)
-    .pipe(catchError(this.handleError));
-  }
-
-  getById(id: number){
-    return this.http.get(this.url + "/" + id)
-      .pipe(catchError(this.handleError));
-  }
-
-  getByEmail(email: string){
-    return this.http.get(this.url + "/users" , {params: {email}})
       .pipe(catchError(this.handleError));
   }
 
@@ -49,7 +34,7 @@ export class DataService {
       .pipe(catchError(this.handleError));
   }
 
-  private handleError (error: Response){
+  protected handleError (error: Response){
     if (error.status === 400)
       return throwError (new BadInput(error.json()));
     else if (error.status === 404)

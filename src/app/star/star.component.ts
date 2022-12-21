@@ -1,17 +1,63 @@
-import { Component, Input } from '@angular/core';
+import { AuthService } from './../Authentication/auth.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { ProductService } from '../services/product.service';
+import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'star',
+  selector: 'saved-item',
   templateUrl: './star.component.html',
   styleUrls: ['./star.component.css']
 })
 
-export class StarComponent {
-  @Input() isFavorite = false;
-  title = "start";
+export class StarComponent implements OnInit {
+  @Input('productId') productId = 0;
+  product: any;
+  user:string = "Guest";
+  email:string = "";
+  userData:any;
+  isFav = false;
+  favCount = 0;
+
+  constructor(
+    private productService: ProductService,
+    private authService: AuthService,
+    private userService: UserService){}
+
+
+  ngOnInit(): void {
+
+    if (this.user = this.authService.currentUser){
+      this.email = this.authService.currentUser.sub;
+
+      this.productService.getProductById(this.productId)
+        .subscribe(response => {
+          this.product = response;
+        })
+    }
+
+    
+  }
+
 
   onClick(){
-    this.isFavorite = !this.isFavorite;
+    this.isFav = !this.isFav;
+    console.log(this.user);
+    console.log(this.product);
+    if (this.user != "Guest" && this.product){
+      if (this.isFav){ // Icon is on now so add the product to the users favorite products
+        this.userService.saveProductToUserFav(this.email,this.product["id"])
+        .subscribe(response => {
+          console.log(response);
+        });
+      }
+      else {
+        this.userService.removeProductToUserFav(this.email,this.product["id"])
+        .subscribe(response => {
+          console.log(response);
+        });
+      }
+    }
   }
+
 
 }

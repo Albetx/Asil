@@ -15,8 +15,9 @@
             [routerLink]="['/product-page', item.id, item.name]">
                 {{item.name}}
         </label>
-        <label class="item-price">{{item.price}}$</label>
         <app-like class="like-button" [id]="item.id" [likesCount]="item.likes"></app-like>
+        <label class="item-price">{{item.price}}$</label>
+        <saved-item class="save-button" [productId]="item.id"></saved-item>
     </div>
 </div>
 

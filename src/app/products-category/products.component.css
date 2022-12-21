@@ -54,13 +54,21 @@ mat-paginator {
 }
 
 .item-price {
-    width: 200px;
+    margin: auto;
+    text-align: center;
+    
     font-size: medium;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    width: 100px;
     display:inline-table;
 }
 
 .like-button{
+    margin-right: 15px;
     float:right;
+}
+
+.save-button{
+    margin-left: 15px;
+    float:left;
+    cursor: pointer;
 }
