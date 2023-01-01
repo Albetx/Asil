@@ -16,6 +16,7 @@ export class ProductsComponent implements OnInit {
 
   pageType = TYPE_CATEGORY;
   productsList: any;
+  pageName = "";
 
   firstItemIndex = 0;
   lastItemIndex = 0;
@@ -41,7 +42,8 @@ export class ProductsComponent implements OnInit {
       .subscribe(response => {
         this.productsList = response;
         this.lastItemIndex = Math.min(this.productsList.length, this.pageSize); // Calculates items in page
-        console.log(this.productsList)});
+        this.pageName = this.productsList[0]["category"]["name"];
+      });
     }
 
     else if (this.pageType == TYPE_SAVED_ITEMS){
@@ -49,7 +51,7 @@ export class ProductsComponent implements OnInit {
         .subscribe((result: any) => {
           this.productsList = result["savedProducts"];
           this.lastItemIndex = Math.min(this.productsList.length, this.pageSize); // Calculates items in page
-          console.log(this.productsList);
+          this.pageName = "Saved Items";
         })
     }
   }
