@@ -33,6 +33,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { UserService } from './services/user.service';
 import { ProductsBarComponent } from './products-bar/products-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { SlidingBannerComponent } from './sliding-banner/sliding-banner.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { FooterComponent } from './footer/footer.component';
     ProductPageComponent,
     ProductsBarComponent,
     FooterComponent,
+    SlidingBannerComponent,
   ],
   imports: [
     BrowserModule,

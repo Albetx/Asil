@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   name = "";
   roles: string[] = [];
+  topBanners = ["/assets/images/banner001.jpg", "/assets/images/banner002.jpg"];
 
   constructor(
     public authService: AuthService,
