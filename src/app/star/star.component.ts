@@ -32,6 +32,20 @@ export class StarComponent implements OnInit {
       this.productService.getProductById(this.productId)
         .subscribe(response => {
           this.product = response;
+          this.userService.getUserByEmail(this.email)
+            .subscribe((response:any) => {
+
+              // Tests if the current item already inside the users saved products and updates the save icon.
+              let alreadySaved = false;
+              for (let i=0; i<response["savedProducts"].length; i++){
+                if (response["savedProducts"][i]["id"] == this.product["id"]){
+                  alreadySaved = true;
+                }
+              }
+              if (alreadySaved){
+                this.isFav = true;
+              }
+            })
         })
     }
 
