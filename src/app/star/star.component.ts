@@ -55,21 +55,29 @@ export class StarComponent implements OnInit {
 
   onClick(){
     this.isFav = !this.isFav;
-    console.log(this.user);
-    console.log(this.product);
+
     if (this.user != "Guest" && this.product){
+      // Remove item from saved list
       if (this.isFav){ // Icon is on now so add the product to the users favorite products
         this.userService.saveProductToUserFav(this.email,this.product["id"])
         .subscribe(response => {
           console.log(response);
         });
       }
+      // Add item to saved list
       else {
         this.userService.removeProductToUserFav(this.email,this.product["id"])
         .subscribe(response => {
           console.log(response);
         });
       }
+    }
+
+    if (this.isFav){
+      window.alert("Item added to your saved-items list.")
+    }
+    else{
+      window.alert("Item removed from your saved-items list.")
     }
   }
 

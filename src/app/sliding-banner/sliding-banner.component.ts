@@ -14,7 +14,7 @@ export class SlidingBannerComponent implements OnInit {
 
   ngOnInit(): void {
     // start the banner rotation
-    this.startBannerRotation();
+    this.startBannerRotation(); 
   }
 
   startBannerRotation() {

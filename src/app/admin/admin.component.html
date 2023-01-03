@@ -1,3 +1,46 @@
-<ul>
-    <li *ngFor="let order of ordersList | keyvalue">{{order.key}}: {{order.value}}</li>
-</ul>
+<div class="form" @todosAnimation>
+    <h3>List of users</h3>
+
+    <div class="search">
+        <label>Search:</label>
+        <input
+            [(ngModel)]="inputValue"
+            (keyup.enter)="onInputChange()"
+            type="text"
+            class="form-control">
+    </div>
+
+    <ul class="list-group">
+        <li
+            @todoAnimation
+            (@todoAnimation.start)="animationStarted($event)"
+            (@todoAnimation.done)="animationDone($event)"
+            *ngFor = "let user of curUsersList" 
+            class="list-group-item">
+            <b>Id</b>: {{user["id"]}}, <b>Name</b>: {{user["name"]}}, <b>Email</b>: {{user["email"]}} <br> <b>Roles</b>: 
+                <div class="roles">
+                    <ul>
+                        <li 
+                        *ngFor = "let role of user['roles']">
+                            <button
+                            (click)="deleteRole(user['email'], role['name'])" 
+                            class="btn-danger btn-sm">
+                            Delete
+                        </button>
+                            {{role["name"]}}
+                        </li>
+                    </ul>
+                </div>
+            <select [formControl]="selectControl">
+                <option
+                    *ngFor="let role of roles" value={{role}}>{{role}}</option>
+            </select>
+            <button
+                type="button"
+                (click)="addRoleToUser(user['email'])" 
+                class="btn-primary btn-sm">
+                Add role
+            </button>
+        </li>
+    </ul>
+</div>
