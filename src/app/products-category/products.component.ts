@@ -1,11 +1,15 @@
+import { catchError, Observable, of, throwError } from 'rxjs';
 import { UserService } from './../services/user.service';
 import { Component, Inject, Injectable, Input, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { AuthService } from '../Authentication/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { BadInput } from '../common/bad-input';
+
 
 const TYPE_CATEGORY = "category";
 const TYPE_SAVED_ITEMS = "saved-items";
+const TYPE_SEARCH = "search-items";
 
 @Component({
   selector: 'app-products',
@@ -17,6 +21,7 @@ export class ProductsComponent implements OnInit {
   pageType = TYPE_CATEGORY;
   productsList: any;
   pageName = "";
+  searchVal = "";
 
   firstItemIndex = 0;
   lastItemIndex = 0;
@@ -35,13 +40,25 @@ export class ProductsComponent implements OnInit {
     this.route.paramMap
       .subscribe(params => {
         this.pageType = String(params.get("type"));
+        if (this.pageType == TYPE_SEARCH){
+          this.searchVal = String(params.get("val"))
+          this.productService.getProductsBySearchString(this.searchVal)
+          .pipe(
+            catchError ((err: BadInput) => of())
+          )
+          .subscribe(response => {
+            this.productsList = response;
+            this.calcLastItemIndex(); // Calculates items in page
+            this.pageName = "Search results"
+          });
+        }
       });
 
     if (this.pageType == TYPE_CATEGORY){
       this.productService.getAll()
       .subscribe(response => {
         this.productsList = response;
-        this.lastItemIndex = Math.min(this.productsList.length, this.pageSize); // Calculates items in page
+        this.calcLastItemIndex(); // Calculates items in page
         this.pageName = this.productsList[0]["category"]["name"];
       });
     }
@@ -50,7 +67,7 @@ export class ProductsComponent implements OnInit {
       this.userService.getUserByEmail(this.authService.currentUser["sub"])
         .subscribe((result: any) => {
           this.productsList = result["savedProducts"];
-          this.lastItemIndex = Math.min(this.productsList.length, this.pageSize); // Calculates items in page
+          this.calcLastItemIndex(); // Calculates items in page
           this.pageName = "Saved Items";
         })
     }
@@ -79,4 +96,7 @@ export class ProductsComponent implements OnInit {
     return this.productsList.length;
   }
 
+  calcLastItemIndex(){
+    this.lastItemIndex = Math.min(this.productsList.length, this.pageSize); // Calculates items in page
+  }
 }

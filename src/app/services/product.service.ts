@@ -17,9 +17,17 @@ export class ProductService extends DataService {
     .pipe(catchError(this.handleError));
   }
 
+  // Search products by name, Max 100 results
+  getProductsBySearchString(search: string){
+    return this.http.get(this.url + "/search/" + search)
+    .pipe(catchError(this.handleError));
+  }
+
   getProductById(id: number){
     return this.http.get(this.url + "/" + id)
       .pipe(catchError(this.handleError));
   }
 
-}
+
+
+  }

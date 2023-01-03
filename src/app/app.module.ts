@@ -85,6 +85,10 @@ import { SlidingBannerComponent } from './sliding-banner/sliding-banner.componen
         component: ProductsComponent
       },
       {
+        path: 'items/:type/:val', 
+        component: ProductsComponent
+      },
+      {
         path: 'admin', 
         component: AdminComponent,
         canActivate: [AuthGuard, AdminAuthGuard]
