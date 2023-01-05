@@ -13,7 +13,6 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-
   login (credentials: any) {
     let params = new HttpParams();
     params = params.append('email', credentials.username);
@@ -32,6 +31,7 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('token');
+    window.location.reload();
   }
 
   isLoggedIn(){

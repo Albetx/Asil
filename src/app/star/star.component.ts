@@ -2,6 +2,7 @@ import { AuthService } from './../Authentication/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'saved-item',
@@ -12,21 +13,22 @@ import { UserService } from '../services/user.service';
 export class StarComponent implements OnInit {
   @Input('productId') productId = 0;
   product: any;
-  user:string = "Guest";
+  user = null;
   email:string = "";
   userData:any;
   isFav = false;
   favCount = 0;
 
   constructor(
+    private router: Router,
     private productService: ProductService,
     private authService: AuthService,
     private userService: UserService){}
 
 
   ngOnInit(): void {
-
-    if (this.user = this.authService.currentUser){
+    this.user = this.authService.currentUser;
+    if (this.user){
       this.email = this.authService.currentUser.sub;
 
       this.productService.getProductById(this.productId)
@@ -48,15 +50,11 @@ export class StarComponent implements OnInit {
             })
         })
     }
-
-    
   }
 
-
   onClick(){
-    this.isFav = !this.isFav;
-
-    if (this.user != "Guest" && this.product){
+    if (this.user != null && this.product){
+      this.isFav = !this.isFav;
       // Remove item from saved list
       if (this.isFav){ // Icon is on now so add the product to the users favorite products
         this.userService.saveProductToUserFav(this.email,this.product["id"])
@@ -71,14 +69,20 @@ export class StarComponent implements OnInit {
           console.log(response);
         });
       }
-    }
 
-    if (this.isFav){
-      window.alert("Item added to your saved-items list.")
-    }
-    else{
-      window.alert("Item removed from your saved-items list.")
-    }
+      if (this.isFav){
+        window.alert("Item added to your saved-items list.")
+      }
+      else{
+        window.alert("Item removed from your saved-items list.")
+      }
+   }
+
+   // User is a guest
+   else {
+    this.router.navigate(['/login']);
+   }
+
   }
 
 

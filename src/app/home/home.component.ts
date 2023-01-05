@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
     private adminAuthGuard: AdminAuthGuard) {}
 
 
-
   ngOnInit(): void {
     let user = this.authService.currentUser;
     console.log(user);

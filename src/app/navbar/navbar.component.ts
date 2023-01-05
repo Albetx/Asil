@@ -1,4 +1,6 @@
+import { AuthService } from './../Authentication/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   searchInputValue = '';
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit(): void {
   }

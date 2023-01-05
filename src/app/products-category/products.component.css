@@ -27,6 +27,7 @@ mat-paginator {
 
 .item-image{
     width: 200px;
+    height: 200px;
     border-radius: 10px;
     display:table-column;
     cursor: pointer;
@@ -46,6 +47,7 @@ mat-paginator {
     display:block;
     margin: 0px;
     cursor: pointer;
+    height: 45px;
 }
 
 .item-description:hover {
@@ -56,7 +58,6 @@ mat-paginator {
 .item-price {
     margin: auto;
     text-align: center;
-    
     font-size: medium;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     display:inline-table;
@@ -71,4 +72,8 @@ mat-paginator {
     margin-left: 15px;
     float:left;
     cursor: pointer;
+}
+
+.buttons {
+    display: flex;
 }

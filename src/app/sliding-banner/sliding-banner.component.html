@@ -1,7 +1,7 @@
 <div class="banner-container">
     <img src="{{ banners[currentBannerIndex] }}" alt="Banner">
-    <button class="control" (click)="prevBanner()">&lt;</button>
-    <button class="control" (click)="nextBanner()">&gt;</button>
+    <button class="control prev" (click)="prevBanner()">&lt;</button>
+    <button class="control next" (click)="nextBanner()">&gt;</button>
     <div class="indicators">
       <span *ngFor="let banner of banners; index as i" [class.active]="i === currentBannerIndex" (click)="selectBanner(i)"></span>
     </div>

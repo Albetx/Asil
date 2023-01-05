@@ -77,7 +77,7 @@ import { SlidingBannerComponent } from './sliding-banner/sliding-banner.componen
         component: ProductPageComponent
       },
       {
-        path: 'multimedia/:type', 
+        path: ':categoryname/:type', 
         component: ProductsComponent
       },
       {

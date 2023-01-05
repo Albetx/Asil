@@ -1,6 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
+import { HttpClient } from '@angular/common/http';
+import { Clipboard } from '@angular/cdk/clipboard';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'product-page',
@@ -12,8 +15,11 @@ export class ProductPageComponent implements OnInit {
   id!: number;
   product: any;
   likes = 0;
+  content = "";
 
   constructor(
+    private clipboard: Clipboard,
+    private http: HttpClient,
     private route: ActivatedRoute,
     private service: ProductService
   ) { }
@@ -27,8 +33,22 @@ export class ProductPageComponent implements OnInit {
           .subscribe(response => {
             this.product = response;
             this.likes = this.product.likes;
+
+            this.http.get(this.product.content, {responseType: 'text'})
+            .subscribe(data => {
+              this.content = data;
+          })
           })
       })
+  }
+
+  redirectToSite() {
+    window.location.href = this.product.link;
+  }
+
+  copyCoupon(){
+    this.clipboard.copy(this.coupon);
+    window.alert("Coupon copied to clipboard!")
   }
 
   get title(){
@@ -41,12 +61,6 @@ export class ProductPageComponent implements OnInit {
     if (!this.product)
       return ""
     return this.product.img;
-  }
-
-  get content(){
-    if (!this.product)
-      return ""
-    return this.product.content;
   }
 
   get coupon(){

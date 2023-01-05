@@ -34,8 +34,17 @@
         <a class="dropdown-item" href="#">Something else here</a>
       </div>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle disabled" href="#">Clothes</a>
+    <li routerLinkActive="active current" class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Clothes
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a 
+          class="dropdown-item" 
+          routerLink="caps/category">
+          Caps
+        </a>
+      </div>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle disabled" href="#">Digital</a>

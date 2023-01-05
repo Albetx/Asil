@@ -3,10 +3,10 @@ import { UserService } from './../services/user.service';
 import { Component, Inject, Injectable, Input, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { AuthService } from '../Authentication/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BadInput } from '../common/bad-input';
 
-
+const SAVE_ITEMS_URL = "/items/saved-items";
 const TYPE_CATEGORY = "category";
 const TYPE_SAVED_ITEMS = "saved-items";
 const TYPE_SEARCH = "search-items";
@@ -28,6 +28,7 @@ export class ProductsComponent implements OnInit {
   currentPage = 0;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private productService: ProductService,
     private userService: UserService,
@@ -47,30 +48,42 @@ export class ProductsComponent implements OnInit {
             catchError ((err: BadInput) => of())
           )
           .subscribe(response => {
+            console.log(response);
             this.productsList = response;
             this.calcLastItemIndex(); // Calculates items in page
             this.pageName = "Search results"
           });
         }
+
+        else if (this.pageType == TYPE_CATEGORY){
+          this.pageName = String(params.get("categoryname"));
+          this.productService.getProductsByCategory(this.pageName)
+          .subscribe(response => {
+            this.productsList = response;
+            this.calcLastItemIndex(); // Calculates items in page
+          });
+        }
+    
+        else if (this.pageType == TYPE_SAVED_ITEMS){
+          let user = this.authService.currentUser;
+    
+          if (user){
+            this.userService.getUserByEmail(user["sub"])
+            .subscribe((result: any) => {
+              this.productsList = result["savedProducts"];
+              this.calcLastItemIndex(); // Calculates items in page
+              this.pageName = "Saved Items";
+            })
+          }
+          // User is a guest
+          else {
+            this.router.navigate(['/login'], {queryParams: {returnUrl: SAVE_ITEMS_URL}});
+          }
+    
+        }
       });
 
-    if (this.pageType == TYPE_CATEGORY){
-      this.productService.getAll()
-      .subscribe(response => {
-        this.productsList = response;
-        this.calcLastItemIndex(); // Calculates items in page
-        this.pageName = this.productsList[0]["category"]["name"];
-      });
-    }
 
-    else if (this.pageType == TYPE_SAVED_ITEMS){
-      this.userService.getUserByEmail(this.authService.currentUser["sub"])
-        .subscribe((result: any) => {
-          this.productsList = result["savedProducts"];
-          this.calcLastItemIndex(); // Calculates items in page
-          this.pageName = "Saved Items";
-        })
-    }
   }
 
   // Updates the table on every page nav
