@@ -1,0 +1,30 @@
+
+form {
+    text-align: center;
+    margin: 50px auto;
+}
+
+input{
+    margin-bottom: 2px;
+}
+
+.form-fildes {
+    width: 80%;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+.form-signin{
+    background-color: rgba(255, 255, 255, 0.55);
+    width: 400px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.is-invalid {
+    border-color: red;
+  }

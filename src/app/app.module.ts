@@ -18,7 +18,6 @@ import { AppComponent } from './app.component';
 import { StarComponent } from './star/star.component';
 import { LikeComponent } from './like/like.component';
 import { ZippyComponent } from './zippy/zippy.component';
-import { AddCourseFormComponent } from './add-course-form/add-course-form.component';
 import { ChangePasswordFormComponent } from './change-password-form/change-password-form.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -34,6 +33,7 @@ import { UserService } from './services/user.service';
 import { ProductsBarComponent } from './products-bar/products-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SlidingBannerComponent } from './sliding-banner/sliding-banner.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -42,7 +42,6 @@ import { SlidingBannerComponent } from './sliding-banner/sliding-banner.componen
     StarComponent,
     LikeComponent,
     ZippyComponent,
-    AddCourseFormComponent,
     ChangePasswordFormComponent,
     NavbarComponent,
     HomeComponent,
@@ -55,6 +54,7 @@ import { SlidingBannerComponent } from './sliding-banner/sliding-banner.componen
     ProductsBarComponent,
     FooterComponent,
     SlidingBannerComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,6 +96,10 @@ import { SlidingBannerComponent } from './sliding-banner/sliding-banner.componen
       {
         path: 'login', 
         component: LoginComponent
+      },
+      {
+        path: 'signup', 
+        component: SignupComponent
       },
       {
         path: 'no-access', 

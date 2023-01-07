@@ -42,6 +42,6 @@ export class DataService {
     else if (error.status === 404)
       return throwError (() => new NotFoundError());
 
-    return throwError (new AppError(error));
+    return throwError (() =>new AppError(error));
   }
 }

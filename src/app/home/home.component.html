@@ -8,6 +8,7 @@
                 <ul>
                     <li class="bi bi-caret-right-fill" *ngIf="authService.isLoggedIn() && isAnAdmin"> <a routerLink="/admin" class="link">Admin</a></li>
                     <li class="bi bi-caret-right-fill" *ngIf="!authService.isLoggedIn()"> <a routerLink="/login">Login </a></li>
+                    <li class="bi bi-caret-right-fill" *ngIf="!authService.isLoggedIn()"> <a routerLink="/signup">Sign up </a></li>
                     <li class="bi bi-caret-right-fill" *ngIf="authService.isLoggedIn()"> <a routerLink="/" (click)="authService.logout()">Logout</a></li>
                 </ul>
             </nav>
