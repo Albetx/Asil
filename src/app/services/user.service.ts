@@ -2,6 +2,7 @@ import { DataService } from './data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, ErrorHandler } from '@angular/core';
 import { catchError } from 'rxjs';
+import { SERVER_URL } from './../services/data.service';
 
 const token = localStorage.getItem('token');
 const options = {
@@ -18,7 +19,7 @@ const options = {
   export class UserService extends DataService {
   
     constructor(http: HttpClient) {
-      super('http://localhost:8080/api/users', http);
+      super(SERVER_URL + "/api/users", http);
     }
   
     // Getting all users - Admin role needed

@@ -6,8 +6,7 @@ import { map } from 'rxjs/internal/operators/map';
 import { AppError } from '../common/app-error';
 import { BadInput } from '../common/bad-input';
 import { NotFoundError } from './../common/not-found-error';
-
-const SERVER_URL = "http://localhost:8080";
+import { SERVER_URL } from './../services/data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +19,7 @@ export class AuthService {
   signup (credentials: any) {
     const body =  {
         "name": credentials.name,
-        "email": credentials.username,
+        "email": credentials.email,
         "password": credentials.password
     };
     let headers = new HttpHeaders({'Content-Type': 'application/json', 'Accept': 'application/json'});

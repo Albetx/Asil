@@ -7,7 +7,7 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./products-bar.component.css']
 })
 export class ProductsBarComponent implements OnInit {
-  NUMBER_OF_ITEMS_IN_BAR = 5;
+  itemsInBar = 5;
 
   @Input('category') category = "";
   @Input() alignment: string = "left";
@@ -19,7 +19,7 @@ export class ProductsBarComponent implements OnInit {
   ngOnInit(): void {
     this.service.getProductsByCategory(this.category)
       .subscribe((response: any) => {
-        this.curProductList = response.slice(0,this.NUMBER_OF_ITEMS_IN_BAR);
+        this.curProductList = response.slice(0,this.itemsInBar);
       })
   }
 

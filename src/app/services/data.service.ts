@@ -6,6 +6,9 @@ import { Inject, Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+export const SERVER_URL = "http://localhost:8080";
+// http://asilspringserver-env.eba-e26dzfyq.us-east-1.elasticbeanstalk.com
+
 @Injectable({
   providedIn: 'root'
 })

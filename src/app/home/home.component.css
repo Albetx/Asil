@@ -43,11 +43,13 @@ h5 {
 }
 
 .top-background{
-    background-image: linear-gradient(transparent, #EFF5F5 90%), url("/assets/images/homebg3.jpg");
+    width: 100%;
+    margin: auto;
+    background: linear-gradient(transparent, #EFF5F5 90%), url("/assets/images/homebg3.jpg");
+    background-repeat: no-repeat;
     background-position: center;
     padding: 20px;
     padding-bottom: 60px;
-    background-repeat: no-repeat;
 }
 
 .banner {
@@ -66,3 +68,29 @@ h5 {
   }
 
 
+
+@media only screen and (max-width: 600px) {
+
+    .home-page {
+        display: flex;
+        flex-direction: column;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    .banner {
+        display: block;
+        margin: auto;
+        width: 100%;
+    }
+
+    .top {
+        width: 100%;
+        /* border-radius: 20px; */
+        background-color: rgba(255, 255, 255, 0.39);
+    }
+
+    .footer {
+        height: 300px;
+      }
+}

@@ -77,3 +77,18 @@ mat-paginator {
 .buttons {
     display: flex;
 }
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+    mat-paginator{
+        width: 100%;
+    }
+
+    .items{
+        width: 100%;
+        text-align:center;
+    }
+}

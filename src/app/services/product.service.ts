@@ -1,15 +1,17 @@
+import { AuthService } from './../Authentication/auth.service';
 import { DataService } from './data.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs';
+import { SERVER_URL } from './../services/data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService extends DataService {
 
-  constructor(http: HttpClient) {
-    super('http://localhost:8080/api/v1/products', http);
+  constructor(http: HttpClient, auth: AuthService) {
+    super(SERVER_URL + "/api/v1/products", http);
   }
 
   getProductsByCategory(category: string){

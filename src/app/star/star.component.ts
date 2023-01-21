@@ -53,7 +53,7 @@ export class StarComponent implements OnInit {
   }
 
   onClick(){
-    if (this.user != null && this.product){
+    if (this.user != null && this.product && this.authService.isLoggedIn()){
       this.isFav = !this.isFav;
       // Remove item from saved list
       if (this.isFav){ // Icon is on now so add the product to the users favorite products

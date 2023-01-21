@@ -18,7 +18,7 @@ input{
     margin-top: 10px;
 }
 
-.form-signin{
+.form-signup{
     background-color: rgba(255, 255, 255, 0.55);
     width: 400px;
     padding: 10px;
@@ -28,3 +28,11 @@ input{
 .is-invalid {
     border-color: red;
   }
+
+
+  
+@media only screen and (max-width: 600px) {
+    .form-signup{
+        width: 100%;
+    }
+}
