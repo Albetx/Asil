@@ -1,27 +1,44 @@
-# Test2
+# AsIL - FullStack project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+<b> Demo:</b> <a href="https://bit.ly/3VQptvT">bit.ly/3VQptvT</a>  (Hosted in aws)
+<br>Admin test user: Israel@gmail.com, password: 111111
 
-## Development server
+This project is an e-commerce website powered by Angular 14 on the frontend, Spring Boot for the backend and MySQL database.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<b>AsIL</b> is a middleman between customers and well known shopping websites. It contains selected products from different sites and provides to the customer the best deals, authentic recommendations and more.
 
-## Code scaffolding
+<b> Backend code: </b> <a href="https://github.com/Albetx/Asil-server">AsIL-Server</a>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![image](https://user-images.githubusercontent.com/107939270/211263788-795c1ff9-b6a4-4172-ba3e-3be7edf5c903.png)
 
-## Build
+## What features already available 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* User authentication using email and password and authorization using JWT token.
+* Home screen contains selected items from selected categories.
+* Categories pages containing all the relevant items.
+* Saved-items page with users favorites.
+* Item pages with a description, available coupons, link for the purcash page and a like counter.
+* Admin panel allows to search users, see their roles and updatae roles.
+* General product search from home screen.
+* Login and Signup screens.
 
-## Running unit tests
+## In development
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* Users reviews component.
+* Moderator panel - add/update/delete items.
+* Mobile view.
+* Performance upgrade.
+* Statistic information collector to show the right items for the user.
 
-## Running end-to-end tests
+## Built With
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+* Angular - Angular 14 Frontend
+* Java - Oracle Jave 17 JDK
+* Spring - Spring Boot 4
+* MySQL - MySQL Database
+* Bootstrap - Icons
+* Angular Material - UI Components
 
-## Further help
+## Authors
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* Albert Ilyasov 
