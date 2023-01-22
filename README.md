@@ -21,12 +21,12 @@ This project is an e-commerce website powered by Angular 14 on the frontend, Spr
 * Admin panel allows to search users, see their roles and updatae roles.
 * General product search from home screen.
 * Login and Signup screens.
+* Mobile view.
 
 ## In development
 
 * Users reviews component.
 * Moderator panel - add/update/delete items.
-* Mobile view.
 * Performance upgrade.
 * Statistic information collector to show the right items for the user.
 
