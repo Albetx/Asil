@@ -11,7 +11,7 @@ This project is an e-commerce website powered by Angular 14 on the frontend, Spr
 
 ![image](https://user-images.githubusercontent.com/107939270/211263788-795c1ff9-b6a4-4172-ba3e-3be7edf5c903.png)
 
-## What features already available 
+## Available features
 
 * User authentication using email and password and authorization using JWT token.
 * Home screen contains selected items from selected categories.
